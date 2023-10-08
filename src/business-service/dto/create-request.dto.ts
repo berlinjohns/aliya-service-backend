@@ -1,8 +1,16 @@
-import { Category } from "../schemas/business.schma"
-
+import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { Category } from '../schemas/business.schma';
 
 export class CreateRequestDto {
-    readonly problem: string
-    readonly company: string
-    readonly category:Category
+  @IsNotEmpty()
+  @IsString()
+  readonly problem: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly company: string;
+
+  @IsNotEmpty()
+  @IsEnum(Category, { message: 'Please enter correct category' })
+  readonly category: Category;
 }
