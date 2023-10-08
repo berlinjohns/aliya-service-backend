@@ -3,6 +3,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { serviceRequest } from './schemas/business.schma';
 import mongoose from 'mongoose';
 
+
+import { Query  } from 'express-serve-static-core';
+
 @Injectable()
 export class BusinessServiceService {
   constructor(
@@ -10,8 +13,18 @@ export class BusinessServiceService {
     private businessServiceModel: mongoose.Model<serviceRequest>,
   ) {}
 
-  async findAllRequestes(): Promise<serviceRequest[]> {
-    const serviceRequestes = await this.businessServiceModel.find();
+  async findAllRequestes(query: Query): Promise<serviceRequest[]> {
+    const resPerPage = 2
+    const currentPage = Number(query.page) || 1
+    const skip =resPerPage* (currentPage-1)
+    const category = query.category ? {
+      category: {
+        $regex: query.category,
+        $options:'i'
+      }
+    }:{}
+    const serviceRequestes = await this.businessServiceModel.find({ ...category }).limit(resPerPage).skip(skip);
+    console.log(query)
     return serviceRequestes;
   }
 
