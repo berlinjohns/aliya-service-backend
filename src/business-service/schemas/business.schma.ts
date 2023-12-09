@@ -1,14 +1,12 @@
 import { Prop,Schema, SchemaFactory } from "@nestjs/mongoose";
 
 export enum Category {
-    TV = "Tv",
     FRIDGE="Fridge",
     AV = "Ac"
-    
 }
 
 @Schema({
-    timestamps: true
+    timestamps: true,
 })
 export class serviceRequest{
     @Prop()
@@ -21,4 +19,4 @@ export class serviceRequest{
     category:Category
 }
 
-export const businessServiceSchema = SchemaFactory.createForClass(serviceRequest)
+export const businessServiceSchema = SchemaFactory.createForClass(serviceRequest);
