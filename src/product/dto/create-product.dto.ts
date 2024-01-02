@@ -15,7 +15,7 @@ export class CreateProductDto{
     readonly price: number;
 
     @IsNotEmpty()
-    @IsNumber()
+    @IsString()
     readonly thumbnail: string;
 
 }

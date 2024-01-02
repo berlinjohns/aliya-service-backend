@@ -15,7 +15,7 @@ export class UpdateProductDto{
     readonly price: number;
 
     @IsOptional()
-    @IsNumber()
+    @IsString()
     readonly thumbnail: string;
 
 }
