@@ -1,22 +1,35 @@
 import { Prop,Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export enum Category {
+export enum Appliance {
     FRIDGE="Fridge",
-    AV = "Ac"
+    AC = "Ac"
 }
 
 @Schema({
     timestamps: true,
 })
 export class serviceRequest{
-    @Prop()
-    problem: string;
 
     @Prop()
-    company: string;
+    name: string;
 
     @Prop()
-    category:Category
+    email: string;
+
+    @Prop()
+    phoneNumber: string;
+
+    // @Prop()
+    // problem: string;
+
+    // @Prop()
+    // company: string;
+
+    @Prop({ required: true, enum: Appliance })
+    appliance: Appliance;
+
+    @Prop()
+    address: string;
 }
 
 export const businessServiceSchema = SchemaFactory.createForClass(serviceRequest);

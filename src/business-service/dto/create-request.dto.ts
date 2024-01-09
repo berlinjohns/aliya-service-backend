@@ -1,16 +1,33 @@
-import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
-import { Category } from '../schemas/business.schma';
+import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { Appliance } from '../schemas/business.schma';
 
 export class CreateRequestDto {
   @IsNotEmpty()
   @IsString()
-  readonly problem: string;
+  readonly name: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  readonly email: string;
+
+  // @IsNotEmpty()
+  // @IsString()
+  // readonly problem: string;
 
   @IsNotEmpty()
   @IsString()
-  readonly company: string;
+  readonly phoneNumber: string;
+
+  // @IsNotEmpty()
+  // @IsString()
+  // readonly company: string;
 
   @IsNotEmpty()
-  @IsEnum(Category, { message: 'Please enter correct category' })
-  readonly category: Category;
+  @IsEnum(Appliance, { message: 'Please enter correct category' })
+  readonly appliance: Appliance;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly address: string;
+
 }
