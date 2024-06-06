@@ -17,7 +17,7 @@ export class ProductService {
     }
 
     async findAllProducts(query: Query): Promise<Products[]> {
-        const resPerPage = 2
+        const resPerPage = 10
         const currentPage = Number(query.page) || 1
         const skip =resPerPage* (currentPage-1)
         const category = query.category ? {
