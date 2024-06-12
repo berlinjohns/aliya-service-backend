@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString,IsNumber } from 'class-validator';
+import { IsNotEmpty, IsString,IsNumber, IsArray } from 'class-validator';
 
 
 export class CreateProductDto{
@@ -17,6 +17,13 @@ export class CreateProductDto{
     @IsNotEmpty()
     @IsString()
     readonly thumbnail: string;
+
+    @IsArray()
+    readonly details:string[];
+
+    @IsNotEmpty()
+    @IsString()
+    readonly condition:string;
 
 }
 

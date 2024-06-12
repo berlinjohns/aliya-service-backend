@@ -9,7 +9,7 @@ async function bootstrap() {
     methods: 'GET, PUT, POST, DELETE',
   });
   app.useGlobalPipes(new ValidationPipe())
-  app.setGlobalPrefix('a')pi/v1
+  app.setGlobalPrefix('api/v1')
   await app.listen(80);
 }
 bootstrap();

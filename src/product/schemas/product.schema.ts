@@ -15,6 +15,12 @@ export class Products {
 
   @Prop()
   thumbnail: string;
+
+  @Prop()
+  details:string[];
+
+  @Prop()
+  condition:string;
 }
 
 export const productSchema = SchemaFactory.createForClass(Products);
